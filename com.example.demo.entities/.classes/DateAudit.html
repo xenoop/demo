@@ -1,0 +1,127 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: DateAudit</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.demo.entities</a> ]
+</div>
+
+<h1>Coverage Summary for Class: DateAudit (com.example.demo.entities)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DateAudit</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    20%
+  </span>
+  <span class="absValue">
+    (1/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    14,3%
+  </span>
+  <span class="absValue">
+    (1/ 7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.demo.entities;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+<i>4</i>&nbsp;import org.springframework.data.annotation.CreatedDate;
+<i>5</i>&nbsp;import org.springframework.data.annotation.LastModifiedDate;
+<i>6</i>&nbsp;import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+<i>7</i>&nbsp;import javax.persistence.Column;
+<i>8</i>&nbsp;import javax.persistence.EntityListeners;
+<i>9</i>&nbsp;import javax.persistence.MappedSuperclass;
+<i>10</i>&nbsp;import java.io.Serializable;
+<i>11</i>&nbsp;import java.time.Instant;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;@MappedSuperclass
+<i>14</i>&nbsp;@EntityListeners(AuditingEntityListener.class)
+<i>15</i>&nbsp;@JsonIgnoreProperties(
+<i>16</i>&nbsp;        value = {&quot;createdAt&quot;, &quot;updatedAt&quot;},
+<i>17</i>&nbsp;        allowGetters = true
+<i>18</i>&nbsp;)
+<b class="fc"><i>19</i>&nbsp;public abstract class DateAudit implements Serializable {</b>
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    @CreatedDate
+<i>22</i>&nbsp;    @Column(nullable = false, updatable = false)
+<i>23</i>&nbsp;    private Instant createdAt;
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    @LastModifiedDate
+<i>26</i>&nbsp;    @Column(nullable = false)
+<i>27</i>&nbsp;    private Instant updatedAt;
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    public Instant getCreatedAt() {
+<b class="nc"><i>30</i>&nbsp;        return createdAt;</b>
+<i>31</i>&nbsp;    }
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    public void setCreatedAt(Instant createdAt) {
+<b class="nc"><i>34</i>&nbsp;        this.createdAt = createdAt;</b>
+<b class="nc"><i>35</i>&nbsp;    }</b>
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    public Instant getUpdatedAt() {
+<b class="nc"><i>38</i>&nbsp;        return updatedAt;</b>
+<i>39</i>&nbsp;    }
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    public void setUpdatedAt(Instant updatedAt) {
+<b class="nc"><i>42</i>&nbsp;        this.updatedAt = updatedAt;</b>
+<b class="nc"><i>43</i>&nbsp;    }</b>
+<i>44</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-08 16:59</div>
+</div>
+</body>
+</html>

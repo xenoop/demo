@@ -1,0 +1,143 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ProfesseurController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.demo.controller</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ProfesseurController (com.example.demo.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ProfesseurController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    11,1%
+  </span>
+  <span class="absValue">
+    (1/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    11,1%
+  </span>
+  <span class="absValue">
+    (1/ 9)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.demo.controller;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.demo.entities.Etudiant;
+<i>4</i>&nbsp;import com.example.demo.entities.Matiere;
+<i>5</i>&nbsp;import com.example.demo.entities.Professeur;
+<i>6</i>&nbsp;import com.example.demo.repositories.EtudiantRepository;
+<i>7</i>&nbsp;import com.example.demo.repositories.ProfesseurRepository;
+<i>8</i>&nbsp;import com.example.demo.service.ServiceProfesseur;
+<i>9</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>10</i>&nbsp;import org.springframework.web.bind.annotation.*;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;import java.util.List;
+<i>13</i>&nbsp;@RestController
+<b class="fc"><i>14</i>&nbsp;public class ProfesseurController {</b>
+<i>15</i>&nbsp;        @Autowired
+<i>16</i>&nbsp;        ProfesseurRepository pr;
+<i>17</i>&nbsp;        @Autowired
+<i>18</i>&nbsp;        ServiceProfesseur sr;
+<i>19</i>&nbsp;        @ResponseBody
+<i>20</i>&nbsp;        @RequestMapping(&quot;/prof&quot;)
+<i>21</i>&nbsp;        public Iterable&lt;Professeur&gt; testSelect(){
+<b class="nc"><i>22</i>&nbsp;            return sr.findall();</b>
+<i>23</i>&nbsp;        }
+<i>24</i>&nbsp;        @RequestMapping(value = &quot;/prof/mat/{id}&quot;,method = RequestMethod.GET)
+<i>25</i>&nbsp;        Iterable&lt;Matiere&gt; matiere(@PathVariable(&quot;id&quot;)long id) {
+<b class="nc"><i>26</i>&nbsp;        return sr.Getmatiere(id);</b>
+<i>27</i>&nbsp;    }
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;        @ResponseBody
+<i>30</i>&nbsp;        @RequestMapping(value = &quot;/prof/create&quot;,method = RequestMethod.POST)
+<i>31</i>&nbsp;        Professeur create(@RequestParam String nom, @RequestParam String prenom){
+<b class="nc"><i>32</i>&nbsp;            return sr.add(nom, prenom);</b>
+<i>33</i>&nbsp;        }
+<i>34</i>&nbsp;        @RequestMapping(value = &quot;/prof/{id}&quot;,method = RequestMethod.GET)
+<i>35</i>&nbsp;        Professeur get(@PathVariable(&quot;id&quot;)long id){
+<b class="nc"><i>36</i>&nbsp;            return sr.findbyid(id);</b>
+<i>37</i>&nbsp;        }
+<i>38</i>&nbsp;        @RequestMapping(value = &quot;/prof/{idprof}/{idmat}&quot;,method = RequestMethod.POST)
+<i>39</i>&nbsp;        String addmat(@PathVariable(&quot;idprof&quot;)long idprof,@PathVariable(&quot;idmat&quot;)long idmat){
+<b class="nc"><i>40</i>&nbsp;            return sr.addMatiere(idprof, idmat);</b>
+<i>41</i>&nbsp;        }
+<i>42</i>&nbsp;        @PutMapping(value = &quot;/prof/{id}&quot;)
+<i>43</i>&nbsp;        Professeur up(@PathVariable(&quot;id&quot;) long id,String nom,String prenom){
+<b class="nc"><i>44</i>&nbsp;            return sr.update(id,nom,prenom);</b>
+<i>45</i>&nbsp;        }
+<i>46</i>&nbsp;        @RequestMapping(value = &quot;/prof/{idprof}/{idmat}&quot;,method = RequestMethod.DELETE)
+<i>47</i>&nbsp;         String supmat(@PathVariable(&quot;idprof&quot;)long idprof,@PathVariable(&quot;idmat&quot;)long idmat){
+<b class="nc"><i>48</i>&nbsp;             return sr.addMatiere(idprof, idmat);</b>
+<i>49</i>&nbsp;    }
+<i>50</i>&nbsp;        @RequestMapping(value = &quot;/prof/{idprof}&quot;,method = RequestMethod.DELETE)
+<i>51</i>&nbsp;        String supmat(@PathVariable(&quot;idprof&quot;)long idprof){
+<b class="nc"><i>52</i>&nbsp;        return sr.delete(idprof);</b>
+<i>53</i>&nbsp;        }
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;    }
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-08 16:59</div>
+</div>
+</body>
+</html>

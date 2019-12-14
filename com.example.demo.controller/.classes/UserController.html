@@ -1,0 +1,160 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: UserController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.demo.controller</a> ]
+</div>
+
+<h1>Coverage Summary for Class: UserController (com.example.demo.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    62,5%
+  </span>
+  <span class="absValue">
+    (5/ 8)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.demo.controller;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.demo.exception.ResourceNotFoundException;
+<i>4</i>&nbsp;import com.example.demo.entities.User;
+<i>5</i>&nbsp;import com.example.demo.payload.*;
+<i>6</i>&nbsp;import com.example.demo.repositories.UserRepository;
+<i>7</i>&nbsp;//import com.example.demo.security.UserPrincipal;
+<i>8</i>&nbsp;//import com.example.demo.security.CurrentUser;
+<i>9</i>&nbsp;import org.slf4j.Logger;
+<i>10</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>11</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>12</i>&nbsp;import org.springframework.http.HttpHeaders;
+<i>13</i>&nbsp;import org.springframework.http.HttpStatus;
+<i>14</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i>15</i>&nbsp;import org.springframework.web.bind.annotation.*;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;import java.util.ArrayList;
+<i>18</i>&nbsp;import java.util.Arrays;
+<i>19</i>&nbsp;import java.util.List;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;@RestController
+<i>22</i>&nbsp;@RequestMapping(&quot;/api&quot;)
+<b class="fc"><i>23</i>&nbsp;public class UserController {</b>
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    @Autowired
+<i>26</i>&nbsp;    private UserRepository userRepository;
+<b class="fc"><i>27</i>&nbsp;    private static final Logger logger = LoggerFactory.getLogger(UserController.class);</b>
+<i>28</i>&nbsp;/*
+<i>29</i>&nbsp;    @GetMapping(&quot;/user/me&quot;)
+<i>30</i>&nbsp;    public UserSummary getCurrentUser(@CurrentUser UserPrincipal currentUser) {
+<i>31</i>&nbsp;        UserSummary userSummary = new UserSummary(currentUser.getId(), currentUser.getUsername(), currentUser.getName());
+<i>32</i>&nbsp;        return userSummary;
+<i>33</i>&nbsp;    }
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    @GetMapping(&quot;/user/checkUsernameAvailability&quot;)
+<i>36</i>&nbsp;    public UserIdentityAvailability checkUsernameAvailability(@RequestParam(value = &quot;username&quot;) String username) {
+<i>37</i>&nbsp;        Boolean isAvailable = !userRepository.existsByUsername(username);
+<i>38</i>&nbsp;        return new UserIdentityAvailability(isAvailable);
+<i>39</i>&nbsp;    }
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    @GetMapping(&quot;/user/checkEmailAvailability&quot;)
+<i>42</i>&nbsp;    public UserIdentityAvailability checkEmailAvailability(@RequestParam(value = &quot;email&quot;) String email) {
+<i>43</i>&nbsp;        Boolean isAvailable = !userRepository.existsByEmail(email);
+<i>44</i>&nbsp;        return new UserIdentityAvailability(isAvailable);
+<i>45</i>&nbsp;    }
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    @GetMapping(&quot;/users/{username}&quot;)
+<i>48</i>&nbsp;    public UserProfile getUserProfile(@PathVariable(value = &quot;username&quot;) String username) {
+<i>49</i>&nbsp;        User user = userRepository.findByUsername(username)
+<i>50</i>&nbsp;                .orElseThrow(() -&gt; new ResourceNotFoundException(&quot;User&quot;, &quot;username&quot;, username));
+<i>51</i>&nbsp;        UserProfile userProfile = new UserProfile(user.getId(), user.getUsername(), user.getName(), user.getCreatedAt());
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;        return userProfile;
+<i>54</i>&nbsp;    }
+<i>55</i>&nbsp;    @GetMapping(&quot;/users/role&quot;)
+<i>56</i>&nbsp;    public List&lt;Object&gt; getauthorities(@CurrentUser UserPrincipal currentUser){
+<i>57</i>&nbsp;        List&lt;Object&gt; role = new ArrayList&lt;Object&gt;();
+<i>58</i>&nbsp;        role= Arrays.asList(currentUser.getAuthorities().toArray());
+<i>59</i>&nbsp;        return role;
+<i>60</i>&nbsp;    }*/
+<i>61</i>&nbsp;    @PostMapping(value = &quot;/test&quot;)
+<i>62</i>&nbsp;    public String testauth(@RequestBody LoginRequest user){
+<b class="nc"><i>63</i>&nbsp;        if (user.getUsernameOrEmail().equals(&quot;test&quot;) &amp;&amp; user.getPassword().equals(&quot;test&quot;)){</b>
+<b class="nc"><i>64</i>&nbsp;            return &quot;success&quot;;</b>
+<i>65</i>&nbsp;        }
+<b class="nc"><i>66</i>&nbsp;        else return &quot;failed&quot;;</b>
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;    }
+<i>69</i>&nbsp;    @Autowired
+<i>70</i>&nbsp;    UserRepository ur;
+<i>71</i>&nbsp;    @PostMapping(value=&quot;/testmock&quot;)
+<i>72</i>&nbsp;    public ResponseEntity&lt;?&gt; testmock(@RequestBody LoginRequest user) {
+<b class="fc"><i>73</i>&nbsp;        if (ur.existsByPassword(user.getPassword()) &amp;&amp; ur.existsByUsername(user.getUsernameOrEmail())) {</b>
+<b class="fc"><i>74</i>&nbsp;            return new ResponseEntity&lt;&gt;(new ApiResponse(true, &quot;success&quot;), HttpStatus.ACCEPTED);</b>
+<i>75</i>&nbsp;        }
+<b class="fc"><i>76</i>&nbsp;        else return new ResponseEntity&lt;&gt;(new ApiResponse(false, &quot;failed&quot;), HttpStatus.NOT_FOUND);</b>
+<i>77</i>&nbsp;    }}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-08 16:59</div>
+</div>
+</body>
+</html>

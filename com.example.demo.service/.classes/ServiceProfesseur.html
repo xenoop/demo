@@ -1,0 +1,152 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ServiceProfesseur</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.demo.service</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ServiceProfesseur (com.example.demo.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ServiceProfesseur</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    11,1%
+  </span>
+  <span class="absValue">
+    (1/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    3,2%
+  </span>
+  <span class="absValue">
+    (1/ 31)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.demo.service;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.demo.entities.Matiere;
+<i>4</i>&nbsp;import com.example.demo.entities.Professeur;
+<i>5</i>&nbsp;import com.example.demo.repositories.MatiereRepository;
+<i>6</i>&nbsp;import com.example.demo.repositories.ProfesseurRepository;
+<i>7</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>8</i>&nbsp;import org.springframework.stereotype.Service;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import javax.validation.constraints.Null;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;@Service
+<b class="fc"><i>13</i>&nbsp;public class ServiceProfesseur {</b>
+<i>14</i>&nbsp;    @Autowired
+<i>15</i>&nbsp;    ProfesseurRepository pr;
+<i>16</i>&nbsp;    @Autowired
+<i>17</i>&nbsp;    MatiereRepository mr;
+<i>18</i>&nbsp;    public Iterable&lt;Professeur&gt; findall() {
+<b class="nc"><i>19</i>&nbsp;        return pr.findAll();</b>
+<i>20</i>&nbsp;    }
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;    public Professeur findbyid(long id) {
+<b class="nc"><i>23</i>&nbsp;        return pr.findById(id).get();</b>
+<i>24</i>&nbsp;    }
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    public String delete(long id) {
+<b class="nc"><i>27</i>&nbsp;        pr.deleteById(id);</b>
+<b class="nc"><i>28</i>&nbsp;        return &quot;success&quot;;</b>
+<i>29</i>&nbsp;    }
+<i>30</i>&nbsp;    public Professeur add(String nom,String prenom){
+<i>31</i>&nbsp;        Professeur prof;
+<b class="nc"><i>32</i>&nbsp;        pr.save(prof =new Professeur(nom,prenom));</b>
+<b class="nc"><i>33</i>&nbsp;        return prof;</b>
+<i>34</i>&nbsp;    }
+<i>35</i>&nbsp;    public String addMatiere(long idprof,long idmat){
+<b class="nc"><i>36</i>&nbsp;        Professeur prof =pr.findById(idprof).get();</b>
+<b class="nc"><i>37</i>&nbsp;        Matiere mat =mr.findById(idmat).get();</b>
+<b class="nc"><i>38</i>&nbsp;        if (mat.getProf()==null){</b>
+<b class="nc"><i>39</i>&nbsp;            mat.setProf(prof);</b>
+<b class="nc"><i>40</i>&nbsp;            prof.getMatiere().add(mat);</b>
+<b class="nc"><i>41</i>&nbsp;            pr.save(prof);</b>
+<b class="nc"><i>42</i>&nbsp;            mr.save(mat);</b>
+<b class="nc"><i>43</i>&nbsp;            return&quot;success&quot;;</b>
+<i>44</i>&nbsp;        }
+<b class="nc"><i>45</i>&nbsp;        else return &quot;error&quot;;</b>
+<i>46</i>&nbsp;    }
+<i>47</i>&nbsp;    public Professeur update(long id,String nom,String prenom){
+<b class="nc"><i>48</i>&nbsp;        Professeur prof = pr.findById(id).get();</b>
+<b class="nc"><i>49</i>&nbsp;        Professeur newprof = new Professeur();</b>
+<b class="nc"><i>50</i>&nbsp;        newprof.setID(id);</b>
+<b class="nc"><i>51</i>&nbsp;        newprof.setNom(nom);</b>
+<b class="nc"><i>52</i>&nbsp;        newprof.setPrenom(prenom);</b>
+<b class="nc"><i>53</i>&nbsp;        newprof.setMatiere(prof.getMatiere());</b>
+<b class="nc"><i>54</i>&nbsp;        pr.delete(prof);</b>
+<b class="nc"><i>55</i>&nbsp;        pr.save(newprof);</b>
+<b class="nc"><i>56</i>&nbsp;        return newprof;</b>
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;    }
+<i>59</i>&nbsp;    public Iterable&lt;Matiere&gt; Getmatiere(long id){
+<b class="nc"><i>60</i>&nbsp;        Professeur prof = pr.findById(id).get();</b>
+<b class="nc"><i>61</i>&nbsp;        return prof.getMatiere();</b>
+<i>62</i>&nbsp;    }
+<i>63</i>&nbsp;    public Professeur supmatiere(long idprof,long idmat){
+<b class="nc"><i>64</i>&nbsp;        Professeur prof =pr.findById(idprof).get();</b>
+<b class="nc"><i>65</i>&nbsp;        Matiere mat =mr.findById(idmat).get();</b>
+<b class="nc"><i>66</i>&nbsp;        prof.getMatiere().remove(mat);</b>
+<b class="nc"><i>67</i>&nbsp;        return prof;</b>
+<i>68</i>&nbsp;    }
+<i>69</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-08 16:59</div>
+</div>
+</body>
+</html>

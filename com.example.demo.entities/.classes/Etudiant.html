@@ -1,0 +1,181 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Etudiant</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.demo.entities</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Etudiant (com.example.demo.entities)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Etudiant</td>
+<td class="coverageStat">
+  <span class="percent">
+    7,1%
+  </span>
+  <span class="absValue">
+    (1/ 14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    7,1%
+  </span>
+  <span class="absValue">
+    (2/ 28)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Etudiant$HibernateProxy$Ua6eDK58</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    7,1%
+  </span>
+  <span class="absValue">
+    (1/ 14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    7,1%
+  </span>
+  <span class="absValue">
+    (2/ 28)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.demo.entities;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.fasterxml.jackson.annotation.JsonIgnore;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import javax.persistence.*;
+<i>6</i>&nbsp;import java.util.ArrayList;
+<i>7</i>&nbsp;import java.util.List;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;@Entity
+<i>10</i>&nbsp;@Table(name = &quot;Etudiant&quot;)
+<i>11</i>&nbsp;public class Etudiant {
+<i>12</i>&nbsp;    @Id
+<i>13</i>&nbsp;    @GeneratedValue(strategy = GenerationType.AUTO)
+<i>14</i>&nbsp;    private Long id;
+<i>15</i>&nbsp;    @Column(name=&quot;nom&quot;,length=40,nullable=false)
+<i>16</i>&nbsp;    private String nom;
+<i>17</i>&nbsp;    @Column(name= &quot;prenom&quot;,length=40,nullable=false)
+<i>18</i>&nbsp;    private String prenom;
+<i>19</i>&nbsp;    @JsonIgnore
+<i>20</i>&nbsp;    @ManyToMany
+<i>21</i>&nbsp;    private List&lt;Matiere&gt; cours;
+<i>22</i>&nbsp;    @Column(name= &quot;matricule&quot;,length=40,nullable=false)
+<i>23</i>&nbsp;    private long matricule;
+<i>24</i>&nbsp;
+<b class="nc"><i>25</i>&nbsp;    public Etudiant(String nom, String prenom, long matricule) {</b>
+<b class="nc"><i>26</i>&nbsp;        this.nom = nom;</b>
+<b class="nc"><i>27</i>&nbsp;        this.prenom = prenom;</b>
+<b class="nc"><i>28</i>&nbsp;        this.matricule=matricule;</b>
+<b class="nc"><i>29</i>&nbsp;    }</b>
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    public long getMatricule() {
+<b class="nc"><i>32</i>&nbsp;        return matricule;</b>
+<i>33</i>&nbsp;    }
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    public void setMatricule(long matricule) {
+<b class="nc"><i>36</i>&nbsp;        this.matricule = matricule;</b>
+<b class="nc"><i>37</i>&nbsp;    }</b>
+<i>38</i>&nbsp;
+<b class="nc"><i>39</i>&nbsp;    public Etudiant(String nom, String prenom) {</b>
+<b class="nc"><i>40</i>&nbsp;        this.nom = nom;</b>
+<b class="nc"><i>41</i>&nbsp;        this.prenom = prenom;</b>
+<b class="nc"><i>42</i>&nbsp;        this.cours = new ArrayList&lt;Matiere&gt;();</b>
+<b class="nc"><i>43</i>&nbsp;    }</b>
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    public String getNom() {
+<b class="nc"><i>46</i>&nbsp;        return nom;</b>
+<i>47</i>&nbsp;    }
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;    public void setNom(String nom) {
+<b class="nc"><i>50</i>&nbsp;        this.nom = nom;</b>
+<b class="nc"><i>51</i>&nbsp;    }</b>
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;    public String getPrenom() {
+<b class="nc"><i>54</i>&nbsp;        return prenom;</b>
+<i>55</i>&nbsp;    }
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;    public void setPrenom(String prenom) {
+<b class="nc"><i>58</i>&nbsp;        this.prenom = prenom;</b>
+<b class="nc"><i>59</i>&nbsp;    }</b>
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;    public List&lt;Matiere&gt; getCours() {
+<b class="nc"><i>62</i>&nbsp;        return cours;</b>
+<i>63</i>&nbsp;    }
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;    public void setCours(List&lt;Matiere&gt; cours) {
+<b class="nc"><i>66</i>&nbsp;        this.cours = cours;</b>
+<b class="nc"><i>67</i>&nbsp;    }</b>
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;    public Long getId() {
+<b class="nc"><i>70</i>&nbsp;        return id;</b>
+<i>71</i>&nbsp;    }
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;    public void setId(Long id) {
+<b class="nc"><i>74</i>&nbsp;        this.id = id;</b>
+<b class="nc"><i>75</i>&nbsp;    }</b>
+<i>76</i>&nbsp;
+<b class="fc"><i>77</i>&nbsp;    public Etudiant() {</b>
+<b class="fc"><i>78</i>&nbsp;    }</b>
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;    @Override
+<i>81</i>&nbsp;    public String toString() {
+<b class="nc"><i>82</i>&nbsp;        return &quot;Etudiant{&quot; +</b>
+<i>83</i>&nbsp;                &quot;id=&quot; + id +
+<i>84</i>&nbsp;                &quot;, nom=&#39;&quot; + nom + &#39;\&#39;&#39; +
+<i>85</i>&nbsp;                &quot;, prenom=&#39;&quot; + prenom + &#39;\&#39;&#39;
+<i>86</i>&nbsp;                ;
+<i>87</i>&nbsp;    }
+<i>88</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-08 16:59</div>
+</div>
+</body>
+</html>

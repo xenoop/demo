@@ -1,0 +1,75 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: UserRepository</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.demo.repositories</a> ]
+</div>
+
+<h1>Coverage Summary for Class: UserRepository (com.example.demo.repositories)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">UserRepository</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.demo.repositories;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.demo.entities.User;
+<i>4</i>&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
+<i>5</i>&nbsp;import com.example.demo.entities.User;
+<i>6</i>&nbsp;import org.springframework.stereotype.Repository;
+<i>7</i>&nbsp;import java.util.List;
+<i>8</i>&nbsp;import java.util.Optional;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import java.util.List;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;public interface UserRepository extends JpaRepository&lt;User,Long&gt; {
+<i>13</i>&nbsp;    Optional&lt;User&gt; findByEmail(String email);
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    Optional&lt;User&gt; findByUsernameOrEmail(String username, String email);
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    List&lt;User&gt; findByIdIn(List&lt;Long&gt; userIds);
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    Optional&lt;User&gt; findByUsername(String username);
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    Boolean existsByUsername(String username);
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    Boolean existsByEmail(String email);
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    boolean findByPassword(String password);
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    boolean existsByPassword(String password);
+<i>28</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-08 16:59</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: EtudiantController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.demo.controller</a> ]
+</div>
+
+<h1>Coverage Summary for Class: EtudiantController (com.example.demo.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">EtudiantController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    14,3%
+  </span>
+  <span class="absValue">
+    (1/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    14,3%
+  </span>
+  <span class="absValue">
+    (1/ 7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.demo.controller;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.demo.entities.Etudiant;
+<i>4</i>&nbsp;import com.example.demo.entities.Matiere;
+<i>5</i>&nbsp;import com.example.demo.repositories.EtudiantRepository;
+<i>6</i>&nbsp;import com.example.demo.repositories.MatiereRepository;
+<i>7</i>&nbsp;import com.example.demo.service.ServiceEtudiant;
+<i>8</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>9</i>&nbsp;import org.springframework.web.bind.annotation.*;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;import java.util.List;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;@RestController
+<b class="fc"><i>14</i>&nbsp;public class EtudiantController {</b>
+<i>15</i>&nbsp;    private List&lt;Matiere&gt; l;
+<i>16</i>&nbsp;    @Autowired
+<i>17</i>&nbsp;    ServiceEtudiant se;
+<i>18</i>&nbsp;    @ResponseBody
+<i>19</i>&nbsp;    @RequestMapping(&quot;/etudiant&quot;)
+<i>20</i>&nbsp;    public Iterable&lt;Etudiant&gt; testSelect(){
+<b class="nc"><i>21</i>&nbsp;        return se.find();</b>
+<i>22</i>&nbsp;    }
+<i>23</i>&nbsp;    @ResponseBody
+<i>24</i>&nbsp;    @RequestMapping(value = &quot;/etudiant/create&quot;,method = RequestMethod.POST)
+<i>25</i>&nbsp;    Etudiant create(@RequestParam String nom,@RequestParam String prenom,@RequestParam long matricule){
+<b class="nc"><i>26</i>&nbsp;        return se.create(nom, prenom,matricule);</b>
+<i>27</i>&nbsp;    }
+<i>28</i>&nbsp;    @ResponseBody
+<i>29</i>&nbsp;    @RequestMapping(value = &quot;/etudiant/update/{id}&quot;,method = RequestMethod.PUT)
+<i>30</i>&nbsp;    Etudiant update(@PathVariable(&quot;id&quot;) Long id,String nom,String prenom,long matricule){
+<b class="nc"><i>31</i>&nbsp;        return se.update(id,nom,prenom,matricule);</b>
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    }
+<i>34</i>&nbsp;    @RequestMapping(value=&quot;/etudiant/del/{id}&quot;,method = RequestMethod.DELETE)
+<i>35</i>&nbsp;    Etudiant sup(@PathVariable(&quot;id&quot;) Long id){
+<i>36</i>&nbsp;
+<b class="nc"><i>37</i>&nbsp;        return se.delete(id);</b>
+<i>38</i>&nbsp;    }
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    @RequestMapping(value = &quot;/etudiants/{idet}/{idmat}&quot;,method = RequestMethod.PUT)
+<i>41</i>&nbsp;    Etudiant cour(@PathVariable(&quot;idet&quot;) Long idet,@PathVariable(&quot;idmat&quot;) Long idmat){
+<b class="nc"><i>42</i>&nbsp;        return se.cour(idet,idmat);</b>
+<i>43</i>&nbsp;    }
+<i>44</i>&nbsp;    @GetMapping(value = &quot;/etudiant/{id}/mat&quot;)
+<b class="nc"><i>45</i>&nbsp;    Iterable&lt;Matiere&gt; cours(@PathVariable(&quot;id&quot;) Long id){return se.cours(id);}</b>
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-08 16:59</div>
+</div>
+</body>
+</html>
